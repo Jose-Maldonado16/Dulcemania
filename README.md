@@ -93,11 +93,12 @@ dulcemania/
    cd dulcemania
 
 2.  **Iniciar el servidor:**
-    ```bash
+   ```bash
    node server.js
 
 2.  **Abrir en el navegador**
-    ```http://localhost:4000
+    ```bash
+    http://localhost:4000
 
 Credenciales de prueba (ADMIN):
 
