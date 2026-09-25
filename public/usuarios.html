@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DulceMania · Usuarios</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-emoji">🍦</span>
+      <h2>DulceMania</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="admin.html" class="nav-item">🍰 Productos</a>
+      <a href="usuarios.html" class="nav-item active">👥 Usuarios</a>
+    </nav>
+    <button id="btnLogout" class="btn-logout">Cerrar Sesión</button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Gestión de Usuarios</h1>
+        <p class="topbar-sub">Administra las cuentas del sistema</p>
+      </div>
+      <div class="user-badge">
+        <span class="user-avatar">👤</span>
+        <span id="userName">Administrador</span>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>👥 Lista de Usuarios</h2>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <input type="text" id="buscador" placeholder="🔍 Buscar..." class="input-buscar">
+          <select id="filtroRol" class="input-filtro">
+            <option value="">Todos los roles</option>
+            <option value="ADMIN">Admin</option>
+            <option value="CLIENTE">Cliente</option>
+            <option value="COCINA">Cocina</option>
+            <option value="CAJERO">Cajero</option>
+          </select>
+          <button class="btn-primary btn-nuevo" id="btnNuevoUsuario">➕ Nuevo</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Creado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="listaUsuarios"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL CREAR/EDITAR -->
+  <div class="modal-overlay" id="modalUsuario">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitulo">✏️ Nuevo Usuario</h2>
+        <button class="modal-close" id="btnCerrarModal">✕</button>
+      </div>
+      <form id="formUsuario" class="product-form">
+        <input type="hidden" id="userId">
+
+        <div class="input-group">
+          <label>Nombre completo</label>
+<input type="text" id="uNombre" placeholder="Ej: María Pérez" required minlength="3">
+        </div>
+
+        <div class="input-group">
+          <label>Correo electrónico</label>
+<input type="email" id="uEmail" placeholder="ejemplo@dulcemania.com" required>
+        </div>
+
+        <div class="input-group">
+          <label>Contraseña <small id="passHint" style="color:#9B8FB0; font-weight:400;"></small></label>
+<input type="password" id="uPassword" placeholder="Mínimo 6 caracteres" minlength="6">
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label>Rol</label>
+            <select id="uRol" required>
+              <option value="CLIENTE">Cliente</option>
+              <option value="ADMIN">Administrador</option>
+              <option value="COCINA">Cocina</option>
+              <option value="CAJERO">Cajero</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Estado</label>
+            <select id="uActivo">
+              <option value="true">Activo</option>
+              <option value="false">Inactivo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btnCancelar">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

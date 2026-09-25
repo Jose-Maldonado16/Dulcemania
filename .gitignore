@@ -1,0 +1,19 @@
+# Dependencias (por si algún día instalas algo)
+node_modules/
+package-lock.json
+
+# Base de datos local (opcional, quítalo si quieres versionarla)
+# db.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp

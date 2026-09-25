@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DulceMania · Acceso</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <span class="logo-emoji">🍦</span>
+        <h1 class="logo-text">DulceMania</h1>
+        <p class="logo-sub">Cafetería & Heladería Sucre</p>
+      </div>
+
+      <form id="formLogin" class="login-form">
+        <div class="input-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="admin@dulcemania.com" value="admin@dulcemania.com" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary">Iniciar Sesión</button>
+        <p id="error" class="error-msg"></p>
+      </form>
+
+      <div class="login-footer">
+        <span>¿No tienes cuenta? <a href="registro.html" style="color: var(--rosa); text-decoration: none; font-weight: 600;">Regístrate</a></span>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

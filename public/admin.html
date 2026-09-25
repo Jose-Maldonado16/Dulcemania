@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DulceMania · Panel Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-emoji">🍦</span>
+      <h2>DulceMania</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="admin.html" class="nav-item active">🍰 Productos</a>
+      <a href="usuarios.html" class="nav-item" id="navUsuarios" style="display:none;">👥 Usuarios</a>
+    </nav>
+    <button id="btnLogout" class="btn-logout">Cerrar Sesión</button>
+  </aside>
+
+    <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1 id="tituloPanel">Panel de Administración</h1>
+        <p class="topbar-sub" id="subtituloPanel">Gestiona el catálogo, inventario y pedidos</p>
+      </div>
+      <div class="user-badge">
+        <span class="user-avatar">👤</span>
+        <span id="userName">Usuario</span>
+      </div>
+    </header>
+
+    <!-- ===== VISTA ADMIN (tabla + formulario) ===== -->
+    <div id="vistaAdmin">
+      <section class="dashboard-grid">
+        <div class="stat-card">
+          <span class="stat-icon">🍰</span>
+          <div>
+            <p class="stat-label">Productos</p>
+            <h3 class="stat-value" id="statProductos">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">📦</span>
+          <div>
+            <p class="stat-label">Pedidos</p>
+            <h3 class="stat-value" id="statPedidos">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">💰</span>
+          <div>
+            <p class="stat-label">Ventas del día</p>
+            <h3 class="stat-value">Bs. 0</h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="card">
+          <div class="card-header">
+            <h2>➕ Agregar Producto</h2>
+          </div>
+          <form id="formProducto" class="product-form">
+            <div class="input-group">
+              <label>Nombre</label>
+              <input type="text" id="nombre" placeholder="Ej: Helado de Chocolate" required>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>Precio (Bs.)</label>
+                <input type="number" id="precio" placeholder="15" step="0.5" required>
+              </div>
+              <div class="input-group">
+                <label>Stock</label>
+                <input type="number" id="stock" placeholder="20" required>
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Categoría</label>
+              <select id="categoria" required>
+                <option value="">Seleccionar...</option>
+                <option value="Helados">Helados</option>
+                <option value="Pasteles">Pasteles</option>
+                <option value="Panes">Panes</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Complementos">Complementos</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>URL de Imagen</label>
+              <input type="url" id="imagen" placeholder="https://..." required>
+            </div>
+            <button type="submit" class="btn-primary">Agregar Producto</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>📋 Lista de Productos</h2>
+            <span class="badge" id="badgeCount">0</span>
+          </div>
+          <div class="table-wrapper">
+            <table class="product-table">
+              <thead>
+                <tr>
+                  <th>Imagen</th>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="listaProductos"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== VISTA CATÁLOGO (solo lectura para COCINA/CAJERO) ===== -->
+    <div id="vistaCatalogo" style="display:none;">
+      <div class="catalogo-header">
+        <div>
+          <h2>🍦 Catálogo de Productos</h2>
+          <p>Consulta el menú disponible y su stock en tiempo real</p>
+        </div>
+        <div class="catalogo-filtros">
+          <input type="text" id="buscarCatalogo" placeholder="🔍 Buscar producto..." class="input-buscar">
+          <select id="filtroCategoria" class="input-filtro">
+            <option value="">Todas las categorías</option>
+            <option value="Helados">Helados</option>
+            <option value="Pasteles">Pasteles</option>
+            <option value="Panes">Panes</option>
+            <option value="Bebidas">Bebidas</option>
+            <option value="Complementos">Complementos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalogo-grid" id="catalogoProductos"></div>
+    </div>
+  </main>
+
+  <!-- MODAL DE EDICIÓN -->
+  <div class="modal-overlay" id="modalEditar">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>✏️ Editar Producto</h2>
+        <button class="modal-close" id="btnCerrarModal">✕</button>
+      </div>
+      <form id="formEditar" class="product-form">
+        <input type="hidden" id="editId">
+        <div class="input-group">
+          <label>Nombre</label>
+          <input type="text" id="editNombre" required>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Precio (Bs.)</label>
+            <input type="number" id="editPrecio" step="0.5" required>
+          </div>
+          <div class="input-group">
+            <label>Stock</label>
+            <input type="number" id="editStock" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Categoría</label>
+          <select id="editCategoria" required>
+            <option value="Helados">Helados</option>
+            <option value="Pasteles">Pasteles</option>
+            <option value="Panes">Panes</option>
+            <option value="Bebidas">Bebidas</option>
+            <option value="Complementos">Complementos</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>URL de Imagen</label>
+          <input type="url" id="editImagen" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btnCancelarEdicion">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

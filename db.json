@@ -1,0 +1,57 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Administrador",
+      "email": "admin@dulcemania.com",
+      "password": "scrypt$f0ec1a44cce0075ea3a7fc0d8f0a91ea$e8fdd74ac1f1ae4eb2c76bb715bf05a6ab12b5fde3d73b3ac5bfba1819b0dd36778310639e63b631e8a85783f0751ba1548b7cc30d17ac033932f9f10ab4fec7",
+      "rol": "ADMIN",
+      "activo": true,
+      "creadoEn": "2026-09-25T00:14:35.916Z"
+    },
+    {
+      "id": 1790296555879,
+      "nombre": "Jose Maldonado",
+      "email": "maldonadojose@gmail.com",
+      "password": "scrypt$0fb4a67e7715328ab6c933f281caa917$ef11f8919e30a314685ecf4e8f8f49178a5c52cfc28e8741bba046e49abe3d3293eb77761ae6e5082a3c7012171df22ee4fc68837484fb8f6a717e93d1660c94",
+      "rol": "CLIENTE",
+      "activo": true,
+      "creadoEn": "2026-09-25T00:35:55.938Z"
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Helado de Chocolate",
+      "precio": 15,
+      "categoria": "Helados",
+      "stock": 20,
+      "imagen": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&h=200&fit=crop"
+    },
+    {
+      "id": 2,
+      "nombre": "Pastel de Fresa",
+      "precio": 25,
+      "categoria": "Pasteles",
+      "stock": 10,
+      "imagen": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=200&h=200&fit=crop"
+    },
+    {
+      "id": 3,
+      "nombre": "Pan de Queso",
+      "precio": 8,
+      "categoria": "Panes",
+      "stock": 30,
+      "imagen": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop"
+    },
+    {
+      "id": 4,
+      "nombre": "Café Americano",
+      "precio": 12,
+      "categoria": "Bebidas",
+      "stock": 50,
+      "imagen": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop"
+    }
+  ],
+  "pedidos": []
+}

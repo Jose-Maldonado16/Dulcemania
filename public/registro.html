@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DulceMania · Crear Cuenta</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <span class="logo-emoji">🍦</span>
+        <h1 class="logo-text">DulceMania</h1>
+        <p class="logo-sub">Crea tu cuenta de cliente</p>
+      </div>
+
+      <form id="formRegistro" class="login-form">
+        <div class="input-group">
+          <label for="rNombre">Nombre completo</label>
+          <input type="text" id="rNombre" placeholder="Ej: María Pérez" required minlength="3">
+        </div>
+        <div class="input-group">
+          <label for="rEmail">Correo electrónico</label>
+          <input type="email" id="rEmail" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        <div class="input-group">
+          <label for="rPassword">Contraseña</label>
+          <input type="password" id="rPassword" placeholder="Mínimo 6 caracteres" required minlength="6">
+        </div>
+        <div class="input-group">
+          <label for="rPassword2">Confirmar contraseña</label>
+          <input type="password" id="rPassword2" placeholder="Repite la contraseña" required minlength="6">
+        </div>
+        <button type="submit" class="btn-primary">Crear Cuenta</button>
+        <p id="error" class="error-msg"></p>
+      </form>
+
+      <div class="login-footer">
+        <span>¿Ya tienes cuenta? <a href="index.html" style="color: var(--rosa); text-decoration: none; font-weight: 600;">Inicia sesión</a></span>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
